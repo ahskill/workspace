@@ -1,0 +1,100 @@
+<script type="text/javascript">
+// 페이지 이동처리 필요 a태그    
+(function(){
+    $('.etcLink').click(function(){
+        var category = $(this).data('category');
+        var url = $(this).data('url');   
+    
+        $('.nav_li').removeClass('active');
+
+        if(url ==='search_userInfo'){
+            var tab = $(this) .data('tab');
+            console.log('tab : ' + tab);
+
+
+            $('#main_page_content').load(url + '.html', function(){
+
+                if(tab === 'tab1_li'){                                        
+
+                    $('#tab2_li').removeClass('active');
+                    $("#tab1_li").addClass('active');                                        
+
+                }else{
+                    $('#tab1_li').removeClass('active');
+                    $("#tab2_li").addClass('active');
+                                        
+                }
+            }); 
+
+        }else{
+            $('#main_page_content').load(url + '.html'); 
+        }
+
+
+         //전체 화면 페이지
+        if(category === 'etc' || category === 'surebet' || category === 'odds' || category === 'analysis' || category === 'star2' || category === 'community'){
+            
+            $('#left_sidebar').addClass('displayNone');
+            $('#main_page_content').removeClass('col-md-9');
+            $('#main_page_content').addClass('col-md-12');
+        }else{
+            $('#left_sidebar').removeClass('displayNone');
+            $('#main_page_content').removeClass('col-md-12');
+            $('#main_page_content').addClass('col-md-9');        
+        }
+
+    });
+})();
+</script>
+
+<link rel="stylesheet" href="assets/css/pages/page_log_reg_v1.css">
+<div class="row" style="min-height:800px">
+    <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+        <form class="reg-page">
+            <div class="reg-header">
+                <h2>Smarc TV</h2>
+            </div>
+
+            <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" placeholder="ID" class="form-control">
+            </div>
+            <div class="input-group margin-bottom-10">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" placeholder="비밀번호 입력" class="form-control">                        
+            </div>
+
+            <div class="alert alert-danger fade in">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4>아이디 또는 비밀번호를 잘못 입력했습니다.</h4>
+                <p>등록되지 않은 아이디이거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다.</p>                       
+            </div>
+
+            <div class="input-group margin-bottom-10" style="width:100%">
+                <button class="btn-u btn-block btn-u-lg" type="submit">로그인</button>                                
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 checkbox">
+                    <label><input type="checkbox">로그인 상태 유지</label>
+                </div>
+            <div class="col-md-8">                            
+                <ul class="list-inline margin-bottom-40 pull-right">
+                    <li><a href="javascript:void(0);" class="menu_fonts etcLink" data-url="search_userInfo" data-category="etc" data-tab="tab2_li">아이디 찾기</a></li>                        
+                    <li><a href="javascript:void(0);" class="menu_fonts etcLink" data-url="search_userInfo" data-category="etc" data-tab="tab1_li">비밀번호 찾기</a></li>                        
+                    <li><a href="javascript:void(0);" class="menu_fonts etcLink" data-url="join" data-category="etc">회원가입</a></li>                        
+                </ul>                                             
+                </div>                        
+            </div>
+            <hr>                
+
+            <ul class="list-inline" style="text-align:center;">
+                <li><a href="#">이용약관</a></li>                        
+                <li><a href="#">개인정보취급방침</a></li>                        
+                <li><a href="#">청소년보호정책</a></li>                        
+                <li><a href="#">스마크도움말</a></li>                        
+            </ul>                                           
+            <p style="text-align:center;">2015 &copy; <strong>SMARCTV</strong> All Rights Reserved.</p>
+        </form>
+    </div>
+</div><!--/row-->
